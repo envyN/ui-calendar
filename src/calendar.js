@@ -38,7 +38,7 @@ angular.module('ui.calendar', [])
 
       this.eventsFingerprint = function(e) {
         if (!e._id) {
-          e._id = eventSerialId++;
+          e._id = e.id ? e.id : ('ui-calendar' + ( eventSerialId++ ));//Search for event 'id' in the passed event object and assign if defined else assign generated id.
         }
         // This extracts all the information we need from the event. http://jsperf.com/angular-calendar-events-fingerprint/3
         return "" + e._id + (e.id || '') + (e.title || '') + (e.url || '') + (+e.start || '') + (+e.end || '') +
